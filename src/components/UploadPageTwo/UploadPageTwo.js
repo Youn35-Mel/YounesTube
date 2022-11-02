@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { storage } from "../../firebase-config";
+import { fetchUser } from "../../utils/fetchUser";
 import {
   ref,
   uploadBytes,
@@ -10,8 +11,10 @@ import {
   list,
   deleteObject,
 } from "firebase/storage";
+import { doc, getFirestore, setDoc } from "firebase/firestore";
+import { app } from "../../firebase-config";
 import { v4 } from "uuid";
-
+import { useNavigate } from "react-router-dom";
 import profile from "../../assets/Images/profile.jpg";
 import "./UploadPageTwo.scss";
 
@@ -61,13 +64,23 @@ const UploadPageTwo = () => {
   };
 
   // useEffect(() => {}, [videoAsset]);
+
+  //send information to the server
+  const navigate = useNavigate();
+  const firebaseDb = getFirestore(app); //access to the firestore database
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [userInfo] = fetchUser();
 
   const uploadDetails = async () => {
     const data = {
       id: `${Date.now()}`,
+      title: "title",
+      description: "description",
+      videoUrl: videoAsset,
     };
+    await setDoc(doc(firebaseDb, "videos", `${Date.now()}`), data);
+    navigate("/", { replace: true });
   };
 
   return (
@@ -82,11 +95,19 @@ const UploadPageTwo = () => {
             </div>
 
             <div className="upload__details">
+              <label className="upload__heading">UPLOAD YOUR VIDEO</label>
+              <input className="upload__video-upload" type="file" />
               <label className="upload__heading">TITLE YOUR VIDEO</label>
-              <input className="upload__video-title" type="file" />
+              <input
+                className="upload__video-title"
+                name="title"
+                id="title"
+                type="text"
+                // value={title}
+              />
               <label className="upload__heading">ADD A VIDEO DESCRIPTION</label>
               <textarea
-                value={description}
+                // value={description}
                 className="upload__video-description"
                 type="text"
                 name="description"
@@ -109,7 +130,11 @@ const UploadPageTwo = () => {
         <button className="upload__delete" onClick={deleteImage}>
           Delete
         </button>
-        <button className="upload__upload-server">UPLOAD TO SERVER</button>
+        <button
+          onClick={() => uploadDetails()}
+          className="upload__upload-server">
+          UPLOAD TO SERVER
+        </button>
       </div>
       <video
         src={videoAsset}
