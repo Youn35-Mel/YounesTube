@@ -1,0 +1,70 @@
+.upload {
+  &__container {
+    display: flex;
+    justify-content: center;
+    width: 95vw;
+    height: 100vh;
+    background-color: brown;
+  }
+
+  &__container-two {
+    width: 80%;
+    height: 90%;
+    border-color: 2px solid black;
+    background-color: white;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    // align-items: center;
+    // justify-content: center;
+    gap: 5rem;
+  }
+
+  &__form-title {
+    font-size: 2rem;
+    width: 99%;
+    height: 60px;
+  }
+  &__form-selector-location {
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem;
+  }
+
+  &__form-selector {
+    height: 30px;
+    width: 100%;
+    font-size: 1rem;
+    background-color: lightseagreen;
+    margin-right: 1rem;
+  }
+
+  &__form-location {
+    width: 100%;
+    height: 25px;
+  }
+
+  //dash selector
+  &__selector {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    background-color: green;
+    display: flex;
+    border-color: black;
+    border-style: dashed;
+    overflow: hidden;
+    position: relative;
+    width: 90%;
+    height: 30vw;
+  }
+  &__text {
+    color: white;
+  }
+
+  &____hide {
+    width: 0;
+    height: 0;
+  }
+}
