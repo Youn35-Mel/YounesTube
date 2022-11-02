@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import "./Upload.scss";
 import {
   IoCheckmark,
@@ -9,6 +9,7 @@ import {
   IoWarning,
 } from "react-icons/io5";
 import Spinner from "../Spinner/Spinner";
+import { Editor } from "@tinymce/tinymce-react";
 
 //storage
 import {
@@ -64,6 +65,15 @@ const Upload = () => {
     );
   };
 
+  const editorRef = useRef(null);
+  const [description, setDescription] = useState("");
+  const getDescriptionValue = () => {
+    if (editorRef.current) {
+      console.log(editorRef.current.getContent());
+      setDescription(editorRef.current.getContent());
+    }
+  };
+
   return (
     <section className="upload">
       <div className="upload__container">
@@ -114,6 +124,33 @@ const Upload = () => {
             </div>
             <button className="upload__publish-btn">PUBLISH</button>
           </form>
+          <Editor
+            onChange={getDescriptionValue}
+            onInit={(evt, editor) => (editorRef.current = editor)}
+            apiKey={process.env.REACT_APP_TINYCMCE_API_KEY}
+            init={{
+              height: 500,
+              width: "100%",
+              menubar: false,
+              plugins: [
+                "advlist autolink lists link image charmap print preview anchor",
+                "searchreplace visualblocks code fullscreen",
+                "insertdatetime media table paste code help wordcount",
+              ],
+              toolbar:
+                "undo redo | formatselect | " +
+                "bold italic backcolor | alignleft aligncenter " +
+                "alignright alignjustify | bullist numlist outdent indent | " +
+                "removeformat | help",
+              content_style:
+                "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
+              content_css: "dark",
+              skin: "oxide-dark",
+            }}
+          />
+          <button className="upload_upload-to-firebase">
+            UPLOAD TO SERVER
+          </button>
         </div>
       </div>
     </section>

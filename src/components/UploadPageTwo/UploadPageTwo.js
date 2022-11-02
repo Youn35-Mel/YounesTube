@@ -61,6 +61,14 @@ const UploadPageTwo = () => {
   };
 
   // useEffect(() => {}, [videoAsset]);
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+
+  const uploadDetails = async () => {
+    const data = {
+      id: `${Date.now()}`,
+    };
+  };
 
   return (
     <section className="upload">
@@ -78,6 +86,7 @@ const UploadPageTwo = () => {
               <input className="upload__video-title" type="file" />
               <label className="upload__heading">ADD A VIDEO DESCRIPTION</label>
               <textarea
+                value={description}
                 className="upload__video-description"
                 type="text"
                 name="description"
@@ -96,12 +105,15 @@ const UploadPageTwo = () => {
         <hr />
         <h2>Uploading done {progress}%</h2>
       </div>
-      <div>
-        <button onClick={deleteImage}>Delete</button>
-        <video
-          src={videoAsset}
-          style={{ width: "100%", height: "300px" }}></video>
+      <div className="upload__delete-upload-container">
+        <button className="upload__delete" onClick={deleteImage}>
+          Delete
+        </button>
+        <button className="upload__upload-server">UPLOAD TO SERVER</button>
       </div>
+      <video
+        src={videoAsset}
+        style={{ width: "100%", height: "300px" }}></video>
     </section>
   );
 };
