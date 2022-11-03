@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import SideNavBar from "../../components/SideNavBar/SideNavBar";
 import { Routes, Route } from "react-router-dom";
 import Profile from "../../components/Profile/Profile";
@@ -18,11 +18,12 @@ const HomePage = ({ user }) => {
       <div className="App__pageSelected">
         <Routes>
           <Route path="/profile" element={<Profile />} />
-          <Route path="/channel" element={<Channels />} />
-          <Route path="/channel/:id" element={<Channels />} />
+          <Route path="/channels" element={<Channels />} />
+          {/* <Route path="/channel/:id" element={<Channels />} /> */}
+          <Route path="/videopin" element={<VideoPin user={user} />} />
           <Route path="/savedItems" element={<Saved />} />
           {/* <Route path="/upload" element={<Upload />} /> */}
-          <Route path="/upload" element={<UploadPageTwo />} />
+          <Route path="/upload" element={<UploadPageTwo user={user} />} />
           <Route path="/videoDetail/:videoId" element={<VideoPin />} />
 
           {/* <Route path="/login" element={<Login />} /> */}

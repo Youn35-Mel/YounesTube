@@ -18,7 +18,7 @@ import { useNavigate } from "react-router-dom";
 import profile from "../../assets/Images/profile.jpg";
 import "./UploadPageTwo.scss";
 
-const UploadPageTwo = () => {
+const UploadPageTwo = ({ user }) => {
   const [videoAsset, setVideoAsset] = useState(null);
   const [progress, setProgress] = useState(0);
 
@@ -78,6 +78,7 @@ const UploadPageTwo = () => {
       title: "title",
       description: "description",
       videoUrl: videoAsset,
+      userId: userInfo.uid,
     };
     await setDoc(doc(firebaseDb, "videos", `${Date.now()}`), data);
     navigate("/", { replace: true });
@@ -90,8 +91,7 @@ const UploadPageTwo = () => {
         <form className="upload__form" onSubmit={formHandler}>
           <div className="upload__form-row">
             <div className="upload__image">
-              <label className="upload__header">THUMBNAIL VIDEO</label>
-              <img src={profile} className="upload__img" alt="Avatar" />
+              <img src={user.photoURL} className="upload__img" alt="Avatar" />
             </div>
 
             <div className="upload__details">

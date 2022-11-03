@@ -11,8 +11,8 @@ const SideNavBar = ({ user }) => {
       icon: "icons/grid.svg",
     },
     {
-      path: "/channel",
-      text: "Dashboard",
+      path: "/channels",
+      text: "Channel",
       icon: "icons/grid.svg",
     },
     {
@@ -20,11 +20,6 @@ const SideNavBar = ({ user }) => {
       text: "Profile",
       icon: "icons/user.svg",
     },
-    // {
-    //   path: "/messages",
-    //   text: "Messages",
-    //   icon: "icons/message.svg",
-    // },
 
     // {
     //   path: "/orders",
@@ -39,7 +34,12 @@ const SideNavBar = ({ user }) => {
     {
       path: "/upload",
       text: "Upload",
-      icon: "icons/heart.svg",
+      icon: "icons/folder.svg",
+    },
+    {
+      path: "/messages",
+      text: "Messages",
+      icon: "icons/message.svg",
     },
   ];
 
