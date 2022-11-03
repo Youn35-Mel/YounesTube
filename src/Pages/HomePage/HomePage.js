@@ -7,6 +7,7 @@ import Saved from "../../components/Saved/Saved";
 import Upload from "../../components/Upload/Upload";
 import VideoPin from "../../components/VideoPin/VideoPin";
 import UploadPageTwo from "../../components/UploadPageTwo/UploadPageTwo";
+import VideoPinDetails from "../../components/VideoPinDetails/VideoPinDetails";
 import "./HomePage.scss";
 
 const HomePage = ({ user }) => {
@@ -18,13 +19,13 @@ const HomePage = ({ user }) => {
       <div className="App__pageSelected">
         <Routes>
           <Route path="/profile" element={<Profile />} />
+          <Route path="/userProfile/:userId" element={<Profile />} />
           <Route path="/channels" element={<Channels />} />
-          {/* <Route path="/channel/:id" element={<Channels />} /> */}
-          <Route path="/videopin" element={<VideoPin user={user} />} />
+          <Route path="/videoDetails/:videoId" element={<VideoPinDetails />} />
+
           <Route path="/savedItems" element={<Saved />} />
           {/* <Route path="/upload" element={<Upload />} /> */}
           <Route path="/upload" element={<UploadPageTwo user={user} />} />
-          <Route path="/videoDetail/:videoId" element={<VideoPin />} />
 
           {/* <Route path="/login" element={<Login />} /> */}
           {/* <Route path="/signup" element={<Signup />} /> */}

@@ -71,7 +71,7 @@ export const userUploadedVideos = async (firestoreDb, userId) => {
 //in order to get img profile for each video
 //look at videopin file to see how its use
 export const getUserInfo = async (firestoreDb, userId) => {
-  const userRef = doc(firestoreDb, "users", userId);
+  const userRef = doc(firestoreDb, "users", userId); //needs database of users and userId
 
   const userSnap = await getDoc(userRef);
   if (userSnap.exists()) {

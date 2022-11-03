@@ -13,4 +13,10 @@
     // left: 0;
     flex-direction: column;
   }
+
+  &__profile-img {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+  }
 }
