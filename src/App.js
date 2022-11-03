@@ -9,15 +9,15 @@ function App() {
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
 
+  const accessToken = userAccessToken();
   useEffect(() => {
-    const accessToken = userAccessToken();
     if (!accessToken) {
       navigate("/login", { replace: true });
     } else {
       const [userInfo] = fetchUser();
       setUser(userInfo);
     }
-  }, []);
+  }, [accessToken]);
 
   return (
     <Routes>

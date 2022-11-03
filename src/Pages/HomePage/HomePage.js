@@ -20,7 +20,7 @@ const HomePage = ({ user }) => {
         <Routes>
           <Route path="/profile" element={<Profile />} />
           <Route path="/userProfile/:userId" element={<Profile />} />
-          <Route path="/channels" element={<Channels />} />
+          <Route path="/channels" element={<Channels user={user} />} />
           <Route path="/videoDetails/:videoId" element={<VideoPinDetails />} />
 
           <Route path="/savedItems" element={<Saved />} />

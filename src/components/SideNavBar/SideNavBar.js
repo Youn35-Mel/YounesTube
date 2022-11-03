@@ -12,7 +12,7 @@ const SideNavBar = ({ user }) => {
     },
     {
       path: "/channels",
-      text: "Channel",
+      text: "Channels",
       icon: "icons/grid.svg",
     },
     {

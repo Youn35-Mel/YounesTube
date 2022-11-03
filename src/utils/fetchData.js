@@ -19,36 +19,10 @@ import {
 
 // fetch all docs from firebase and export the function where it will be collected on
 //HomePage useffect
+//part 1
 export const getAllFeeds = async (firestoreDb) => {
   const feeds = await getDocs(
     query(collection(firestoreDb, "videos"), orderBy("id", "desc"))
-  );
-
-  return feeds.docs.map((doc) => doc.data());
-};
-
-// CategoryWise Feeds
-export const categoryFeeds = async (firestoreDb, categoryId) => {
-  const feeds = await getDocs(
-    query(
-      collection(firestoreDb, "videos"),
-      where("category", "==", categoryId),
-      orderBy("id", "desc")
-    )
-  );
-
-  return feeds.docs.map((doc) => doc.data());
-};
-
-// Get recommended feeds
-export const recommendedFeed = async (firestoreDb, categoryId, videoId) => {
-  const feeds = await getDocs(
-    query(
-      collection(firestoreDb, "videos"),
-      where("category", "==", categoryId),
-      where("id", "!=", videoId),
-      orderBy("id", "desc")
-    )
   );
 
   return feeds.docs.map((doc) => doc.data());
@@ -81,7 +55,7 @@ export const getUserInfo = async (firestoreDb, userId) => {
   }
 };
 
-// fetch the specific Video
+// part-3 fetch the specific Video (For VideoDetails page)
 export const getSpecificVideo = async (firestoreDb, videoId) => {
   const videoRef = doc(firestoreDb, "videos", videoId);
 

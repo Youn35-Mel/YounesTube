@@ -11,7 +11,7 @@ import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 import VideoPin from "../VideoPin/VideoPin";
 
-const Channels = () => {
+const Channels = ({ user }) => {
   //firestore database collect instance
   const firestoreDb = getFirestore(app);
   const [feeds, setFeeds] = useState(null);
@@ -41,7 +41,7 @@ const Channels = () => {
     <ul className="channels__High">
       {feeds && // why are putting feeds && feeds.map?
         feeds.map((data) => {
-          return <VideoPin key={data.id} data={data} />;
+          return <VideoPin key={data.id} data={data} user={user} />;
         })}
     </ul>
   );

@@ -4,6 +4,9 @@ import { getUserInfo } from "../../utils/fetchData";
 import "./VideoPin.scss";
 import { app } from "../../firebase-config";
 import { getFirestore } from "firebase/firestore";
+import moment from "moment";
+const avatarProfile =
+  "https://www.pikpng.com/pngl/m/80-805068_my-profile-icon-blank-profile-picture-circle-clipart.png";
 
 const VideoPin = ({ data, user }) => {
   // console.log(data);
@@ -37,10 +40,12 @@ const VideoPin = ({ data, user }) => {
       <Link to={`/userProfile/${userId}`}>
         <img
           className="channels__profile-img"
-          src={userInfo?.photoURL}
+          src={userInfo?.photoURL ? userInfo?.photoURL : avatarProfile}
           alt=""
         />
+        {/* <img src={user?.photoURL} alt="" /> */}
       </Link>
+      <p> {moment(new Date(parseInt(data.id)).toISOString()).fromNow()}</p>
       {/* cant get photo of particular individual */}
       {/* </div> */}
     </li>

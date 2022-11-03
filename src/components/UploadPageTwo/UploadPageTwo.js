@@ -72,17 +72,27 @@ const UploadPageTwo = ({ user }) => {
   const [description, setDescription] = useState("");
   const [userInfo] = fetchUser();
 
-  const uploadDetails = async () => {
+  const uploadDetails = async (title, description) => {
     const data = {
       id: `${Date.now()}`,
-      title: "title",
-      description: "description",
+      title: title,
+      description: description,
       videoUrl: videoAsset,
       userId: userInfo.uid,
     };
     await setDoc(doc(firebaseDb, "videos", `${Date.now()}`), data);
     navigate("/", { replace: true });
   };
+
+  // const [formFields, setFormFields] = useState(null);
+  // const inputChangeHandler = (e) => {
+  //   console.log(e.target.value);
+  //   const value = e.target.value;
+  //   setFormFields({
+  //     ...formFields,
+  //     [e.target.name]: value,
+  //   });
+  // };
 
   return (
     <section className="upload">
@@ -99,6 +109,7 @@ const UploadPageTwo = ({ user }) => {
               <input className="upload__video-upload" type="file" />
               <label className="upload__heading">TITLE YOUR VIDEO</label>
               <input
+                onChange={(e) => setTitle(e.target.value)}
                 className="upload__video-title"
                 name="title"
                 id="title"
@@ -107,6 +118,7 @@ const UploadPageTwo = ({ user }) => {
               />
               <label className="upload__heading">ADD A VIDEO DESCRIPTION</label>
               <textarea
+                onChange={(e) => setDescription(e.target.value)}
                 // value={description}
                 className="upload__video-description"
                 type="text"
@@ -131,7 +143,7 @@ const UploadPageTwo = ({ user }) => {
           Delete
         </button>
         <button
-          onClick={() => uploadDetails()}
+          onClick={() => uploadDetails(title, description)}
           className="upload__upload-server">
           UPLOAD TO SERVER
         </button>
