@@ -18,10 +18,13 @@ const HomePage = ({ user }) => {
       </div>
       <div className="App__pageSelected">
         <Routes>
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/profile" element={<Profile user={user} />} />
           <Route path="/userProfile/:userId" element={<Profile />} />
           <Route path="/channels" element={<Channels user={user} />} />
-          <Route path="/videoDetails/:videoId" element={<VideoPinDetails />} />
+          <Route
+            path="/videoDetails/:videoId"
+            element={<VideoPinDetails user={user} />}
+          />
 
           <Route path="/savedItems" element={<Saved user={user} />} />
           {/* <Route path="/upload" element={<Upload />} /> */}

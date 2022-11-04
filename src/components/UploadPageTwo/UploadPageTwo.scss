@@ -95,7 +95,7 @@
   }
 
   &__delete-upload-container {
-    @include form-button-delete;
+    // @include form-button-delete;
     display: flex;
     justify-content: space-around;
   }

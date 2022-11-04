@@ -12,7 +12,7 @@ const Spinner = ({ msg, progress }) => {
       <Circles color="orange" />
       <Box sx={{ display: "flex", alignItems: "center" }}>
         <Box sx={{ width: "100%", mr: 1 }}>
-          <LinearProgress variant="determinate" />
+          {/* <LinearProgress variant="determinate" /> */}
         </Box>
         <Box sx={{ minWidth: 35 }}></Box>
       </Box>{" "}

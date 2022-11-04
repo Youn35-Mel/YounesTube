@@ -8,38 +8,38 @@ const SideNavBar = ({ user }) => {
     {
       path: "/home",
       text: "Home",
-      icon: "icons/grid.svg",
+      icon: "/icons/grid.svg",
+      id: 1,
     },
     {
       path: "/channels",
       text: "Channels",
-      icon: "icons/grid.svg",
+      icon: "/icons/grid.svg",
+      id: 2,
     },
     {
       path: "/profile",
       text: "Profile",
-      icon: "icons/user.svg",
+      icon: "/icons/user.svg",
+      id: 3,
     },
-
-    // {
-    //   path: "/orders",
-    //   text: "Orders",
-    //   icon: "icons/shopping-cart.svg",
-    // },
     {
       path: "/savedItems",
       text: "Saved Items",
-      icon: "icons/heart.svg",
+      icon: "/icons/heart.svg",
+      id: 4,
     },
     {
       path: "/upload",
       text: "Upload",
-      icon: "icons/folder.svg",
+      icon: "/icons/folder.svg",
+      id: 5,
     },
     {
       path: "/messages",
       text: "Messages",
-      icon: "icons/message.svg",
+      icon: "/icons/message.svg",
+      id: 6,
     },
   ];
 
@@ -72,16 +72,13 @@ const SideNavBar = ({ user }) => {
             </button>
           </div>
           <div className="nav-menu">
-            {menuItems.map(({ path, text, icon }) => (
-              <Link to={path}>
-                <a
-                  className={
-                    isExpanded ? "menu-item" : "menu-item menu-item-NX"
-                  }
-                  href="#">
-                  <img className="menu-item-icon" src={icon} alt="" srcset="" />
-                  {isExpanded && <p>{text}</p>}
-                </a>
+            {menuItems.map(({ path, text, icon, id }) => (
+              <Link
+                to={path}
+                key={id}
+                className={isExpanded ? "menu-item" : "menu-item menu-item-NX"}>
+                <img className="menu-item-icon" src={icon} alt="" />
+                {isExpanded && <p>{text}</p>}
               </Link>
             ))}
           </div>
@@ -93,7 +90,6 @@ const SideNavBar = ({ user }) => {
                 className="nav-footer-avatar"
                 src="icons/admin-avatar.svg"
                 alt=""
-                srcset=""
               />
               <div className="nav-footer-info">
                 <p className="nav-footer-user-name">YounesTube</p>
@@ -103,12 +99,7 @@ const SideNavBar = ({ user }) => {
               </div>
             </div>
           )}
-          <img
-            className="logout-icon"
-            src="icons/logout.svg"
-            alt=""
-            srcset=""
-          />
+          <img className="logout-icon" src="icons/logout.svg" alt="" />
         </div>
       </div>
     </div>
