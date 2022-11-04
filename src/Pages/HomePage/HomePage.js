@@ -23,7 +23,7 @@ const HomePage = ({ user }) => {
           <Route path="/channels" element={<Channels user={user} />} />
           <Route path="/videoDetails/:videoId" element={<VideoPinDetails />} />
 
-          <Route path="/savedItems" element={<Saved />} />
+          <Route path="/savedItems" element={<Saved user={user} />} />
           {/* <Route path="/upload" element={<Upload />} /> */}
           <Route path="/upload" element={<UploadPageTwo user={user} />} />
 

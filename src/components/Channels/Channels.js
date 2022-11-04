@@ -29,21 +29,13 @@ const Channels = ({ user }) => {
 
   if (loading) return <Spinner msg={"Loading your feeds/Videos"} />;
 
-  //grid code for Item
-  const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
-    ...theme.typography.body2,
-    padding: theme.spacing(10),
-    textAlign: "center",
-    color: theme.palette.text.secondary,
-  }));
   return (
-    <ul className="channels__High">
+    <div className="mainContainer">
       {feeds && // why are putting feeds && feeds.map?
         feeds.map((data) => {
           return <VideoPin key={data.id} data={data} user={user} />;
         })}
-    </ul>
+    </div>
   );
 };
 

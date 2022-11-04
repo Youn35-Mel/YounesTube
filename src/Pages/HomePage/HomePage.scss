@@ -1,3 +1,9 @@
 .App {
   display: flex;
+  height: 100vh;
+}
+
+.App__pageSelected {
+  height: 100vh;
+  overflow: scroll;
 }

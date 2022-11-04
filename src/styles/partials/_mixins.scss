@@ -36,6 +36,41 @@ $container-breakpoint: 1280px;
   }
 }
 
+@mixin form-button {
+  width: 14rem;
+  height: 3.6rem;
+  border-radius: 20px;
+  border: 1px solid #bdc5d5;
+  background-color: #ffffff;
+  color: #5c667e;
+  &:hover {
+    border: 1px solid #2e66e5;
+    color: #2e66e5;
+  }
+}
+@mixin form-button-blue {
+  background-color: #2e66e5;
+  color: $primary-colour-3;
+  border: none;
+  &:hover {
+    background-color: #232940;
+    color: #ffffff;
+    border: none;
+  }
+}
+
+@mixin form-button-delete {
+  width: 14rem;
+  height: 3.6rem;
+  border-radius: 20px;
+  border: none;
+  background-color: #c94515;
+  color: #ffff;
+  &:hover {
+    background-color: #232940;
+  }
+}
+
 @mixin primary-CTA {
   height: 4rem;
   width: 100%;

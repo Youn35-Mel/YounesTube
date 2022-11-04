@@ -149,8 +149,9 @@ const UploadPageTwo = ({ user }) => {
         </button>
       </div>
       <video
+        className="upload__upload-video"
         src={videoAsset}
-        style={{ width: "100%", height: "300px" }}></video>
+        style={{ width: "100%", height: "250px" }}></video>
     </section>
   );
 };

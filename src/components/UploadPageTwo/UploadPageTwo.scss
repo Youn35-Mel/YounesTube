@@ -1,9 +1,10 @@
+@use "../../styles/partials/mixins" as *;
+
 .upload {
   padding: 16px;
 
   &__title {
     margin: 0;
-    padding: 4.8rem 0 3.6rem 0;
   }
 
   &__form-row {
@@ -94,7 +95,12 @@
   }
 
   &__delete-upload-container {
+    @include form-button-delete;
     display: flex;
     justify-content: space-around;
+  }
+
+  &__upload-video {
+    margin-top: 1rem;
   }
 }
