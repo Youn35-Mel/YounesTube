@@ -73,32 +73,22 @@ const VideoPinDetails = ({ user }) => {
           <h2>{videoInfo?.title}</h2>
           <video
             className="VideoDetails__video"
-            style={{ width: "50%", height: "600px" }}
+            style={{ width: "50vw", height: "600px" }}
             controls>
             <source src={videoInfo?.videoUrl} type="video/mp4" />
           </video>
         </div>
         <div className="video-container__left-bottom">
-          <h2 className="text-white font-bold md:text-xl p-4">Lists</h2>
-          <div className="relative flex items-center group">
-            <MdChevronLeft
-              onClick={slideLeft}
-              className="bg-white left-0 rounded-full absolute opacity-50 hover:opacity-100 cursor-pointer z-10 hidden group-hover:block"
-              size={40}
-            />
-            {/* <div
-              id={"slider"}
-              className="w-full h-full overflow-x-scroll whitespace-nowrap scroll-smooth scrollbar-hide relative">
-              {movies.map((item, id) => (
-                <Movie key={id} item={item} />
-              ))}
-            </div> */}
-            <MdChevronRight
-              onClick={slideRight}
-              className="bg-white right-0 rounded-full absolute opacity-50 hover:opacity-100 cursor-pointer z-10 hidden group-hover:block"
-              size={40}
-            />
-          </div>
+          <img src="https://via.placeholder.com/210/00FF00?text=1" />
+          <img src="https://via.placeholder.com/220/00FF00?text=2" />
+          <img src="https://via.placeholder.com/230/00FF00?text=3" />
+          <img src="https://via.placeholder.com/240/00FF00?text=4" />
+          <img src="https://via.placeholder.com/250/00FF00?text=5" />
+          <img src="https://via.placeholder.com/260/00FF00?text=6" />
+          <img src="https://via.placeholder.com/270/00FF00?text=7" />
+          <img src="https://via.placeholder.com/280/00FF00?text=8" />
+          <img src="https://via.placeholder.com/250/00FF00?text=9" />
+          <img src="https://via.placeholder.com/260/00FF00?text=10" />
         </div>
       </div>
       <div className="video-container__right">

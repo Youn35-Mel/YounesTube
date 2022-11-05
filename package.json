@@ -20,6 +20,7 @@
     "react-player": "^2.11.0",
     "react-router-dom": "^6.4.3",
     "react-scripts": "5.0.1",
+    "react-slick": "^0.29.0",
     "redux": "^4.2.0",
     "sass": "^1.55.0",
     "uuid": "^9.0.0",

@@ -31,8 +31,13 @@
   }
 
   &__left-top {
-    // background-color: green;
-    // height: 70vh;
+    background-color: white;
+    height: 70vh;
+  }
+
+  &__left-bottom {
+    background-color: beige;
+    height: 100vh;
   }
 
   &__video {
@@ -50,7 +55,7 @@
   &__right {
     overflow: scroll;
     color: black;
-    height: 100vh;
+    height: 90vh;
     width: 25vw;
   }
 }

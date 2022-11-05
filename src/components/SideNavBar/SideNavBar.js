@@ -18,7 +18,7 @@ const SideNavBar = ({ user }) => {
       id: 2,
     },
     {
-      path: "/profile",
+      path: `/userProfile/${user?.uid}`,
       text: "Profile",
       icon: "/icons/user.svg",
       id: 3,

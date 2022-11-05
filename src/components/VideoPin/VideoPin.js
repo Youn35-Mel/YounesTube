@@ -40,7 +40,7 @@ const VideoPin = ({ data, user }) => {
     if (userId)
       getUserInfo(firestoreDb, userId).then((data) => {
         setUserInfo(data);
-        console.log(data);
+        // console.log(data);
       });
   }, [userId]);
 
