@@ -1,4 +1,5 @@
 import React from "react";
+import { gertUserInfo, userUploadedVideos } from "../../utils/fetchData";
 
 const Profile = ({ user }) => {
   return (

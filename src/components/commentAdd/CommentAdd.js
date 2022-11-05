@@ -4,11 +4,11 @@ import Button from "@mui/material/Button";
 // import SendRoundedIcon from "@mui/icons-material/SendRounded";
 import "./CommentAdd.scss";
 
-const CommentAdd = ({ setFormComment, submitHandler }) => {
+const CommentAdd = ({ setFormComment, submitHandler, user }) => {
   return (
     <section className="new-comment">
       <div className="new-comment__comment-container">
-        <img className="new-comment__user-img" src={mohanMuruge} alt="" />
+        <img className="new-comment__user-img" src={user?.photoURL} alt="" />
         <div className="new-comment__form-container">
           <form
             onSubmit={(e) => submitHandler(e)}

@@ -81,18 +81,8 @@ const UploadPageTwo = ({ user }) => {
       userId: userInfo.uid,
     };
     await setDoc(doc(firebaseDb, "videos", `${Date.now()}`), data);
-    navigate("/", { replace: true });
+    navigate("/channels", { replace: true });
   };
-
-  // const [formFields, setFormFields] = useState(null);
-  // const inputChangeHandler = (e) => {
-  //   console.log(e.target.value);
-  //   const value = e.target.value;
-  //   setFormFields({
-  //     ...formFields,
-  //     [e.target.name]: value,
-  //   });
-  // };
 
   return (
     <section className="upload">

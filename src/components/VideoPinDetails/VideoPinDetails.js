@@ -5,9 +5,8 @@ import { app } from "../../firebase-config";
 import { getFirestore, updateDoc, arrayUnion, doc } from "firebase/firestore";
 import Spinner from "../../components/Spinner/Spinner";
 import "./VideoPinDetails.scss";
-import ReactPlayer from "react-player";
-import { Player } from "video-react";
 import CommentAdd from "../commentAdd/CommentAdd";
+import CommentItem from "../CommentItem/CommentItem";
 import { v4 as uuid } from "uuid";
 
 ///
@@ -56,6 +55,7 @@ const VideoPinDetails = ({ user }) => {
     await updateDoc(videoRef, {
       comments: arrayUnion({
         id: uuid(),
+        timestamp: `${Date.now()}`,
         user_id: user.uid,
         text: formComment,
       }),
@@ -105,13 +105,12 @@ const VideoPinDetails = ({ user }) => {
         <ul className="comments-list">
           {videoInfo.comments &&
             videoInfo.comments.map((comment) => (
-              <p key={comment.id}>{comment.text}</p>
-              // <CommentItem
-              // key={comment.id}
-              // commentData={comment}
-              // submitHandler={props.submitHandler}
-              // deleteBtn={props.deleteBtn}
-              // />
+              <CommentItem
+                key={comment.id}
+                comment={comment.text}
+                timestamp={comment.timestamp}
+                user={user}
+              />
             ))}
           {!videoInfo.comments && <p>No comments...</p>}
         </ul>
