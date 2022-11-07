@@ -1,15 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import "./CommentItem.scss";
 import moment from "moment";
+import DeleteIcon from "@mui/icons-material/Delete";
+import { deleteDoc, doc } from "firebase/firestore";
 
-const CommentItem = ({ comment, user, timestamp }) => {
+const CommentItem = ({
+  comment,
+  user,
+  timestamp,
+  deleteComment,
+  userInfo,
+  key,
+}) => {
   return (
     <div className="comment__default">
       <div className="comment__default-container-one">
         <div className="comment__header--image-one">
           <img
             className="comment__header--image-one"
-            src={user?.photoURL}
+            src={userInfo?.photoURL}
             alt=""
           />
         </div>
@@ -24,8 +33,14 @@ const CommentItem = ({ comment, user, timestamp }) => {
         <p className="comment__text-container-default--comment">{comment}</p>
       </div>
       <div className="comment__icon">
-        <button className="comment__icon-btn" name="deleteID">
+        <button
+          onClick={() => {
+            deleteComment(key);
+          }}
+          className="comment__icon-btn"
+          name="deleteID">
           {/* <FontAwesomeIcon icon={faTrash} /> */}
+          <DeleteIcon />
         </button>
       </div>
     </div>

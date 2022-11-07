@@ -9,6 +9,7 @@ import VideoPin from "../../components/VideoPin/VideoPin";
 import UploadPageTwo from "../../components/UploadPageTwo/UploadPageTwo";
 import VideoPinDetails from "../../components/VideoPinDetails/VideoPinDetails";
 import "./HomePage.scss";
+import Home from "../../components/Home/Home";
 
 const HomePage = ({ user }) => {
   return (
@@ -18,6 +19,7 @@ const HomePage = ({ user }) => {
       </div>
       <div className="App__pageSelected">
         <Routes>
+          <Route path="/home" element={<Home />} />
           <Route path="/userProfile/:userId" element={<Profile />} />
           <Route path="/channels" element={<Channels user={user} />} />
           <Route

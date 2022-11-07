@@ -1,15 +1,27 @@
 import React, { useEffect, useState } from "react";
 import {
+  deleteVideo,
   gertUserInfo,
   getUserInfo,
   userUploadedVideos,
 } from "../../utils/fetchData";
 import ProfileItem from "../ProfileItem/ProfileItem";
 import { useParams } from "react-router-dom";
-import { app } from "../../firebase-config";
-import { getFirestore, updateDoc, arrayUnion, doc } from "firebase/firestore";
+import { app, db, storage } from "../../firebase-config";
+import {
+  getFirestore,
+  updateDoc,
+  arrayUnion,
+  doc,
+  deleteDoc,
+} from "firebase/firestore";
+import { deleteObject, ref } from "firebase/storage";
+import { useNavigate } from "react-router-dom";
+import "./Profile.scss";
 
 const Profile = ({ user }) => {
+  console.log(user);
+  let navigate = useNavigate();
   const { userId } = useParams();
   const [userInfo, setUserInfo] = useState(null);
   const [feeds, setFeeds] = useState(null);
@@ -27,17 +39,44 @@ const Profile = ({ user }) => {
         // console.log(feed);
       });
     }
-  }, [userId]);
+  }, [userId, userId]);
 
+  const deleteProfileVideo = async (videoId) => {
+    console.log("delete");
+    deleteVideo(fireStoreDb, videoId);
+  };
   return (
     <section className="profile">
       <div className="profile__img-container">
         <img className="profile__img" src={userInfo?.photoURL} alt="" />
+        <h1>Channel</h1>
+        <p class="title">Lenny Guvnor</p>
+        <a href="#">
+          <i class="fa fa-dribbble"></i>
+        </a>
+        <a href="#">
+          <i class="fa fa-twitter"></i>
+        </a>
+        <a href="#">
+          <i class="fa fa-linkedin"></i>
+        </a>
+        <a href="#">
+          <i class="fa fa-facebook"></i>
+        </a>
+        <p>
+          <button className="button-contact">Contact</button>
+        </p>
       </div>
       <ul className="video__list">
         {feeds &&
           feeds.map((item) => {
-            return <ProfileItem key={item.id} item={item} />;
+            return (
+              <ProfileItem
+                key={item.id}
+                item={item}
+                deleteProfileVideo={deleteProfileVideo}
+              />
+            );
           })}
       </ul>
     </section>

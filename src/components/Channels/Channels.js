@@ -24,7 +24,6 @@ const Channels = ({ user }) => {
       setFeeds(data);
       setLoading(false);
     });
-    console.log(feeds);
   }, []);
 
   if (loading) return <Spinner msg={"Loading your feeds/Videos"} />;
@@ -40,53 +39,3 @@ const Channels = ({ user }) => {
 };
 
 export default Channels;
-
-{
-  /* <div className="map-database">
-  {feeds.map((data) => {
-    <VideoPin key={data.id} data={data} />;
-  })}
-</div> */
-}
-{
-  /* <Box sx={{ width: "100%" }}>
-  <div className="section">
-    <Grid
-      container
-      rowSpacing={5}
-      columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-      <Grid item xs={6}>
-        <Item>1</Item>
-      </Grid>
-      <Grid item xs={6}>
-        <Item>2</Item>
-      </Grid>
-      <Grid item xs={6}>
-        <Item>3</Item>
-      </Grid>
-      <Grid item xs={6}>
-        <Item>4</Item>
-      </Grid>
-    </Grid>{" "}
-  </div>
-  <div className="section">
-    <Grid
-      container
-      rowSpacing={5}
-      columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-      <Grid item xs={6}>
-        <Item>1</Item>
-      </Grid>
-      <Grid item xs={6}>
-        <Item>2</Item>
-      </Grid>
-      <Grid item xs={6}>
-        <Item>3</Item>
-      </Grid>
-      <Grid item xs={6}>
-        <Item>4</Item>
-      </Grid>
-    </Grid>{" "}
-  </div>
-</Box> */
-}

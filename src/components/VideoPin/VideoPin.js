@@ -19,6 +19,8 @@ const VideoPin = ({ data, user }) => {
   const [like, setLike] = useState(false);
   const [saved, setSaved] = useState(false);
 
+  // const movieID = doc(firestoreDb, "videos", videoId);
+
   // const saveShow = async () => {
   //   if (user?.email) {
   //     setLike(!like);
@@ -40,13 +42,11 @@ const VideoPin = ({ data, user }) => {
     if (userId)
       getUserInfo(firestoreDb, userId).then((data) => {
         setUserInfo(data);
-        // console.log(data);
       });
   }, [userId]);
 
   let arrayPin = ["small", "medium", "large"];
   let pinSize = arrayPin[Math.floor(Math.random() * arrayPin.length)];
-  console.log(pinSize);
 
   return (
     <div className={`pin ${pinSize}`}>
@@ -83,36 +83,6 @@ const VideoPin = ({ data, user }) => {
         </div>
       </div>
     </div>
-    // <li className="channels">
-    // <Link to={`/videoDetails/${data.id}`}>
-    //   <video
-    //     className="channels__video"
-    //     src={data.videoUrl}
-    //     muted
-    //     onMouseOver={(e) => e.target.play()}
-    //     onMouseOut={(e) => e.target.pause()}></video>
-    // </Link>
-    //   {/* <div className="channels__details"> */}
-    //   <p>{data.title}</p>
-    //   <Link to={`/userProfile/${userId}`}>
-    //     <img
-    //       className="channels__profile-img"
-    //       src={userInfo?.photoURL ? userInfo?.photoURL : avatarProfile}
-    //       alt=""
-    //     />
-    //     {/* <img src={user?.photoURL} alt="" /> */}
-    //   </Link>
-    //   <p> {moment(new Date(parseInt(data.id)).toISOString()).fromNow()}</p>
-    //   <p
-    //   // onClick={saveShow}
-    //   >
-    //     {like ? (
-    //       <FaHeart className="absolute top-4 left-4 text-gray-300" />
-    //     ) : (
-    //       <FaRegHeart className="absolute top-4 left-4 text-gray-300" />
-    //     )}
-    //   </p>
-    // </li>
   );
 };
 

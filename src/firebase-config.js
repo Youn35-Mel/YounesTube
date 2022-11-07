@@ -15,6 +15,18 @@ const firebaseConfig = {
   appId: process.env.REACT_APP_FIREBASE_API_ID,
 };
 
+// capstone Oauth firebase-config
+// const firebaseConfig = {
+//   apiKey: "AIzaSyAEj6KNGCfwEMFJXz_euutAxJv9CVjXt8I",
+//   authDomain: "capstone-oauth-1d504.firebaseapp.com",
+//   databaseURL:
+//     "https://capstone-oauth-1d504-default-rtdb.europe-west1.firebasedatabase.app",
+//   projectId: "capstone-oauth-1d504",
+//   storageBucket: "capstone-oauth-1d504.appspot.com",
+//   messagingSenderId: "28619707886",
+//   appId: "1:28619707886:web:737ef0984c0baf9265eaff",
+// };
+
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);

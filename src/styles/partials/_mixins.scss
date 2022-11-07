@@ -49,11 +49,14 @@ $container-breakpoint: 1280px;
   }
 }
 @mixin form-button-blue {
+  width: 14rem;
+  height: 3rem;
+  border-radius: 20px;
   background-color: #2e66e5;
-  color: $primary-colour-3;
+  color: white;
   border: none;
   &:hover {
-    background-color: #232940;
+    background-color: #c94515;
     color: #ffffff;
     border: none;
   }
