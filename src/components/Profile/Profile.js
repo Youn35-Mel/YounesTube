@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {
   deleteVideo,
-  gertUserInfo,
   getUserInfo,
   userUploadedVideos,
 } from "../../utils/fetchData";
@@ -21,7 +20,6 @@ import "./Profile.scss";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 const Profile = ({ user }) => {
-  // console.log(user);
   // const [user] = useAuthState(auth);
 
   let navigate = useNavigate();
@@ -29,24 +27,22 @@ const Profile = ({ user }) => {
   const [userInfo, setUserInfo] = useState(null);
   const [feeds, setFeeds] = useState(null);
 
-  const fireStoreDb = getFirestore(app);
-
   useEffect(() => {
     if (userId) {
-      getUserInfo(fireStoreDb, userId).then((user) => {
+      getUserInfo(db, userId).then((user) => {
         setUserInfo(user);
         // console.log(user);
       });
-      userUploadedVideos(fireStoreDb, userId).then((feed) => {
+      userUploadedVideos(db, userId).then((feed) => {
         setFeeds(feed);
-        console.log(feed);
+        // console.log(feed);
       });
     }
-  }, [userId, userId]);
+  }, [userId]);
 
   const deleteProfileVideo = async (videoId) => {
     console.log("delete");
-    deleteVideo(fireStoreDb, videoId);
+    deleteVideo(db, videoId);
   };
   return (
     <section className="profile">
@@ -54,16 +50,16 @@ const Profile = ({ user }) => {
         <img className="profile__img" src={userInfo?.photoURL} alt="" />
         <h1>Channel</h1>
         <p class="title">Lenny Guvnor</p>
-        <a href="#">
+        <a>
           <i class="fa fa-dribbble"></i>
         </a>
-        <a href="#">
+        <a>
           <i class="fa fa-twitter"></i>
         </a>
-        <a href="#">
+        <a>
           <i class="fa fa-linkedin"></i>
         </a>
-        <a href="#">
+        <a>
           <i class="fa fa-facebook"></i>
         </a>
         <p>
