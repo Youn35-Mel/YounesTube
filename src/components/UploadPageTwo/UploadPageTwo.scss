@@ -42,17 +42,17 @@
   input {
     color: white;
     width: 100%;
-    border: 1px solid silver;
+    border: 1px solid black;
     border-radius: 4px;
-    background-color: gray;
+    background-color: #e1e1e1;
     padding: 16px;
   }
   &:focus {
     color: black;
-    border-color: gray;
+    border-color: black;
   }
   &:active {
-    border-color: gray;
+    border-color: black;
   }
 
   input[type="text"] {
@@ -78,11 +78,15 @@
   }
 
   &__publish-btn {
+    @include form-button-blue;
+  }
+
+  &__upload-server {
+    @include form-button-blue;
+    background-image: url("../../assets//Icons/publish.svg");
     background-repeat: no-repeat;
     background-position: 12px;
     margin-bottom: 20px;
-
-    margin-right: 10px;
   }
 
   &__cancel-btn {

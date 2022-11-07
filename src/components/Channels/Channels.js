@@ -16,6 +16,7 @@ const Channels = ({ user }) => {
   const firestoreDb = getFirestore(app);
   const [feeds, setFeeds] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [likeClicked, setLikeClicked] = useState(false);
 
   useEffect(() => {
     //fetch the data
@@ -23,9 +24,9 @@ const Channels = ({ user }) => {
       setLoading(true);
       setFeeds(data);
       setLoading(false);
+      setLikeClicked(false);
     });
-    console.log(feeds);
-  }, []);
+  }, [likeClicked]);
 
   if (loading) return <Spinner msg={"Loading your feeds/Videos"} />;
 
@@ -33,60 +34,17 @@ const Channels = ({ user }) => {
     <div className="mainContainer">
       {feeds && // why are putting feeds && feeds.map?
         feeds.map((data) => {
-          return <VideoPin key={data.id} data={data} user={user} />;
+          return (
+            <VideoPin
+              key={data.id}
+              data={data}
+              user={user}
+              setLikeClicked={setLikeClicked}
+            />
+          );
         })}
     </div>
   );
 };
 
 export default Channels;
-
-{
-  /* <div className="map-database">
-  {feeds.map((data) => {
-    <VideoPin key={data.id} data={data} />;
-  })}
-</div> */
-}
-{
-  /* <Box sx={{ width: "100%" }}>
-  <div className="section">
-    <Grid
-      container
-      rowSpacing={5}
-      columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-      <Grid item xs={6}>
-        <Item>1</Item>
-      </Grid>
-      <Grid item xs={6}>
-        <Item>2</Item>
-      </Grid>
-      <Grid item xs={6}>
-        <Item>3</Item>
-      </Grid>
-      <Grid item xs={6}>
-        <Item>4</Item>
-      </Grid>
-    </Grid>{" "}
-  </div>
-  <div className="section">
-    <Grid
-      container
-      rowSpacing={5}
-      columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-      <Grid item xs={6}>
-        <Item>1</Item>
-      </Grid>
-      <Grid item xs={6}>
-        <Item>2</Item>
-      </Grid>
-      <Grid item xs={6}>
-        <Item>3</Item>
-      </Grid>
-      <Grid item xs={6}>
-        <Item>4</Item>
-      </Grid>
-    </Grid>{" "}
-  </div>
-</Box> */
-}

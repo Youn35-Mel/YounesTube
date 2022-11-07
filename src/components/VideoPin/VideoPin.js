@@ -2,51 +2,36 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getUserInfo } from "../../utils/fetchData";
 import "./VideoPin.scss";
-import { app } from "../../firebase-config";
+import { app, auth } from "../../firebase-config";
 import { getFirestore } from "firebase/firestore";
 import moment from "moment";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
+import LikeArticle from "../LikeArticle/LikeArticle";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { db } from "../../firebase-config";
 
 const avatarProfile =
   "https://www.pikpng.com/pngl/m/80-805068_my-profile-icon-blank-profile-picture-circle-clipart.png";
 
-const VideoPin = ({ data, user }) => {
-  // console.log(data);
+const VideoPin = ({ data, user, setLikeClicked }) => {
+  console.log(data);
+  // const [user] = useAuthState(auth);
 
-  const firestoreDb = getFirestore(app);
   const [userInfo, setUserInfo] = useState(null);
   const [userId, setUserId] = useState(null);
   const [like, setLike] = useState(false);
   const [saved, setSaved] = useState(false);
 
-  // const saveShow = async () => {
-  //   if (user?.email) {
-  //     setLike(!like);
-  //     setSaved(true);
-  //     await updateDoc("videos", {
-  //       savedShows: arrayUnion({
-  //         // id: item.id,
-  //         // title: item.title,
-  //         // img: item.backdrop_path,
-  //       }),
-  //     });
-  //   } else {
-  //     alert("Please log in to save a movie");
-  //   }
-  // };
-  //
   useEffect(() => {
     if (data) setUserId(data.userId);
     if (userId)
-      getUserInfo(firestoreDb, userId).then((data) => {
+      getUserInfo(db, userId).then((data) => {
         setUserInfo(data);
-        // console.log(data);
       });
   }, [userId]);
 
   let arrayPin = ["small", "medium", "large"];
   let pinSize = arrayPin[Math.floor(Math.random() * arrayPin.length)];
-  console.log(pinSize);
 
   return (
     <div className={`pin ${pinSize}`}>
@@ -74,45 +59,17 @@ const VideoPin = ({ data, user }) => {
           <p
           // onClick={saveShow}
           >
-            {like ? (
-              <FaHeart className="channel__heart" />
-            ) : (
-              <FaRegHeart className="channel__heart" />
+            {user && (
+              <LikeArticle
+                id={data.id}
+                likes={data.likes}
+                setLikeClicked={setLikeClicked}
+              />
             )}
           </p>
         </div>
       </div>
     </div>
-    // <li className="channels">
-    // <Link to={`/videoDetails/${data.id}`}>
-    //   <video
-    //     className="channels__video"
-    //     src={data.videoUrl}
-    //     muted
-    //     onMouseOver={(e) => e.target.play()}
-    //     onMouseOut={(e) => e.target.pause()}></video>
-    // </Link>
-    //   {/* <div className="channels__details"> */}
-    //   <p>{data.title}</p>
-    //   <Link to={`/userProfile/${userId}`}>
-    //     <img
-    //       className="channels__profile-img"
-    //       src={userInfo?.photoURL ? userInfo?.photoURL : avatarProfile}
-    //       alt=""
-    //     />
-    //     {/* <img src={user?.photoURL} alt="" /> */}
-    //   </Link>
-    //   <p> {moment(new Date(parseInt(data.id)).toISOString()).fromNow()}</p>
-    //   <p
-    //   // onClick={saveShow}
-    //   >
-    //     {like ? (
-    //       <FaHeart className="absolute top-4 left-4 text-gray-300" />
-    //     ) : (
-    //       <FaRegHeart className="absolute top-4 left-4 text-gray-300" />
-    //     )}
-    //   </p>
-    // </li>
   );
 };
 

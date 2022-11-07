@@ -1,0 +1,15 @@
+.video-carousel {
+  margin-top: 2rem;
+  &__video {
+    object-fit: fill;
+    margin: 0;
+    height: 200px;
+    width: 250px;
+    border-radius: 20px;
+  }
+
+  &__description {
+    margin: 0;
+    font-size: 12px;
+  }
+}

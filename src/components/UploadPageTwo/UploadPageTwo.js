@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { storage } from "../../firebase-config";
+import { storage, auth } from "../../firebase-config";
 import { fetchUser } from "../../utils/fetchUser";
 import {
   ref,
@@ -15,10 +15,19 @@ import { doc, getFirestore, setDoc } from "firebase/firestore";
 import { app } from "../../firebase-config";
 import { v4 } from "uuid";
 import { useNavigate } from "react-router-dom";
-import profile from "../../assets/Images/profile.jpg";
+import LinearProgress from "@mui/material/LinearProgress";
+import Box from "@mui/material/Box";
 import "./UploadPageTwo.scss";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 const UploadPageTwo = ({ user }) => {
+  // const [user] = useAuthState(auth);
+  console.log(user);
+
+  const notify = () => toast("Wow so easy!");
+
   const [videoAsset, setVideoAsset] = useState(null);
   const [progress, setProgress] = useState(0);
 
@@ -41,6 +50,7 @@ const UploadPageTwo = ({ user }) => {
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100
         );
         setProgress(prog);
+        // console.log(prog);
       },
       (error) => console.log(error),
       () => {
@@ -79,15 +89,22 @@ const UploadPageTwo = ({ user }) => {
       description: description,
       videoUrl: videoAsset,
       userId: userInfo.uid,
+      createdBy: user.displayName,
+      userId: user.uid,
+      likes: [],
+      comments: [],
     };
     await setDoc(doc(firebaseDb, "videos", `${Date.now()}`), data);
-    navigate("/channels", { replace: true });
+    notify();
+    setProgress(0);
+    // navigate("/channels", { replace: true });
   };
+
+  useEffect(() => {}, [title, description]);
 
   return (
     <section className="upload">
       <div className="container">
-        <h1 className="upload__title">Upload Page</h1>
         <form className="upload__form" onSubmit={formHandler}>
           <div className="upload__form-row">
             <div className="upload__image">
@@ -97,16 +114,17 @@ const UploadPageTwo = ({ user }) => {
             <div className="upload__details">
               <label className="upload__heading">UPLOAD YOUR VIDEO</label>
               <input className="upload__video-upload" type="file" />
-              <label className="upload__heading">TITLE YOUR VIDEO</label>
+              <label className="upload__heading"> VIDEO TITLE</label>
               <input
                 onChange={(e) => setTitle(e.target.value)}
                 className="upload__video-title"
                 name="title"
                 id="title"
                 type="text"
+                placeholder="Add a title"
                 // value={title}
               />
-              <label className="upload__heading">ADD A VIDEO DESCRIPTION</label>
+              <label className="upload__heading">ADD DESCRIPTION</label>
               <textarea
                 onChange={(e) => setDescription(e.target.value)}
                 // value={description}
@@ -127,11 +145,18 @@ const UploadPageTwo = ({ user }) => {
         </form>
         <hr />
         <h2>Uploading done {progress}%</h2>
+        {progress === 0 || 100 ? null : (
+          <div className="progress">
+            <Box sx={{ width: "100%" }}>
+              <LinearProgress />
+            </Box>
+          </div>
+        )}
       </div>
       <div className="upload__delete-upload-container">
-        <button className="upload__delete" onClick={deleteImage}>
+        {/* <button className="upload__delete" onClick={deleteImage}>
           Delete
-        </button>
+        </button> */}
         <button
           onClick={() => uploadDetails(title, description)}
           className="upload__upload-server">

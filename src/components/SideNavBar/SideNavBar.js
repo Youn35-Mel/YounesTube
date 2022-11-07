@@ -8,7 +8,7 @@ const SideNavBar = ({ user }) => {
     {
       path: "/home",
       text: "Home",
-      icon: "/icons/grid.svg",
+      icon: "/icons/pie-chart.svg",
       id: 1,
     },
     {
@@ -56,7 +56,7 @@ const SideNavBar = ({ user }) => {
             {isExpanded && (
               <div className="nav-brand">
                 <img src="icons/Logo.svg" alt="" srcset="" />
-                <h2>Showkart</h2>
+                <h2>MeTube</h2>
               </div>
             )}
             <button
