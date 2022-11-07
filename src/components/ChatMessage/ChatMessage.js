@@ -7,6 +7,8 @@ const ChatMessage = ({ scroll }) => {
   const [msg, setMsg] = useState("");
   const [user] = useAuthState(auth);
 
+  console.log(user);
+
   const sendMessage = async (e) => {
     e.preventDefault();
 
@@ -15,6 +17,7 @@ const ChatMessage = ({ scroll }) => {
       photoURL: user.photoURL,
       uid: user.uid,
       createdAt: Timestamp.now().toDate(),
+      userName: user.displayName,
     });
     setMsg("");
     scroll.current.scrollIntoView({ behavior: "smooth" });

@@ -18,7 +18,7 @@ import {
 import Spinner from "../../components/Spinner/Spinner";
 import "./VideoPinDetails.scss";
 import CommentAdd from "../commentAdd/CommentAdd";
-import CommentItem from "../CommentItem/CommentItem";
+import CommentItem from "../CommentItem/commentItem";
 import VideoCarousel from "../VideoCarousel/VideoCarousel";
 import { v4 as uuid } from "uuid";
 
@@ -31,10 +31,10 @@ import Slider from "react-slick";
 const VideoPinDetails = ({ user }) => {
   const settings = {
     dots: false,
-    infinite: true,
+    // infinite: true,
     speed: 500,
     slidesToShow: 3,
-    slidesToScroll: 3,
+    slidesToScroll: 1,
   };
   const firebaseDb = getFirestore(app);
   const [loading, setLoading] = useState(false);
@@ -89,10 +89,10 @@ const VideoPinDetails = ({ user }) => {
         timestamp: `${Date.now()}`,
         // user_id: user.uid,
         text: formComment,
-        // author: {
-        //   name: auth.currentUser.displayName,
-        //   id: auth.currentUser.uid,
-        // },
+        author: {
+          name: auth.currentUser.displayName,
+          id: auth.currentUser.uid,
+        },
       }),
     });
 
@@ -119,7 +119,8 @@ const VideoPinDetails = ({ user }) => {
           <video
             className="VideoDetails__video"
             style={{ width: "50vw", height: "600px" }}
-            controls>
+            controls
+            key={videoInfo?.videoUrl}>
             <source src={videoInfo?.videoUrl} type="video/mp4" />
           </video>
         </div>
@@ -143,6 +144,7 @@ const VideoPinDetails = ({ user }) => {
                 user={user}
                 userInfo={userInfo}
                 deleteComment={deleteComment}
+                author={comment.author.name}
               />
             ))}
           {!videoInfo.comments && <p>No comments...</p>}

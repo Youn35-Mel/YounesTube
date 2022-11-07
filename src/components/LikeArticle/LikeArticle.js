@@ -3,7 +3,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, db } from "../../firebase-config";
 import { arrayRemove, arrayUnion, doc, updateDoc } from "firebase/firestore";
 
-const LikeArticle = ({ id, likes }) => {
+const LikeArticle = ({ id, likes, setLikeClicked }) => {
   const [user] = useAuthState(auth);
 
   const likesRef = doc(db, "videos", id);
@@ -15,6 +15,7 @@ const LikeArticle = ({ id, likes }) => {
       })
         .then(() => {
           console.log("unliked");
+          setLikeClicked(true);
         })
         .catch((e) => {
           console.log(e);
@@ -25,6 +26,7 @@ const LikeArticle = ({ id, likes }) => {
       })
         .then(() => {
           console.log("liked");
+          setLikeClicked(true);
         })
         .catch((e) => {
           console.log(e);

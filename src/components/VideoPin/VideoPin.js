@@ -13,7 +13,7 @@ import { db } from "../../firebase-config";
 const avatarProfile =
   "https://www.pikpng.com/pngl/m/80-805068_my-profile-icon-blank-profile-picture-circle-clipart.png";
 
-const VideoPin = ({ data, user }) => {
+const VideoPin = ({ data, user, setLikeClicked }) => {
   console.log(data);
   // const [user] = useAuthState(auth);
 
@@ -59,7 +59,13 @@ const VideoPin = ({ data, user }) => {
           <p
           // onClick={saveShow}
           >
-            {user && <LikeArticle id={data.id} likes={data.likes} />}
+            {user && (
+              <LikeArticle
+                id={data.id}
+                likes={data.likes}
+                setLikeClicked={setLikeClicked}
+              />
+            )}
           </p>
         </div>
       </div>

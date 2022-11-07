@@ -46,8 +46,9 @@ const Chat = () => {
                 className={`msg ${
                   message.uid === user.uid ? "sent" : "received"
                 }`}>
-                <img className="msg-user" src={user.photoURL} alt="" />
+                <img className="msg-user" src={message.photoURL} alt="" />
                 <p>{message.text}</p>
+                <p>{message.userName}</p>
               </div>
             );
           })}

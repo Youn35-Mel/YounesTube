@@ -16,6 +16,7 @@ const Channels = ({ user }) => {
   const firestoreDb = getFirestore(app);
   const [feeds, setFeeds] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [likeClicked, setLikeClicked] = useState(false);
 
   useEffect(() => {
     //fetch the data
@@ -23,8 +24,9 @@ const Channels = ({ user }) => {
       setLoading(true);
       setFeeds(data);
       setLoading(false);
+      setLikeClicked(false);
     });
-  }, []);
+  }, [likeClicked]);
 
   if (loading) return <Spinner msg={"Loading your feeds/Videos"} />;
 
@@ -32,7 +34,14 @@ const Channels = ({ user }) => {
     <div className="mainContainer">
       {feeds && // why are putting feeds && feeds.map?
         feeds.map((data) => {
-          return <VideoPin key={data.id} data={data} user={user} />;
+          return (
+            <VideoPin
+              key={data.id}
+              data={data}
+              user={user}
+              setLikeClicked={setLikeClicked}
+            />
+          );
         })}
     </div>
   );

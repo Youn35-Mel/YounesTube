@@ -8,13 +8,14 @@ import { storage, db, auth } from "../../firebase-config";
 
 const CommentItem = ({
   comment,
-  // user,
+  user,
   timestamp,
   deleteComment,
   userInfo,
   key,
+  author,
 }) => {
-  const [user] = useAuthState(auth);
+  // const [user] = useAuthState(auth);
 
   return (
     <div className="comment__default">
@@ -28,7 +29,7 @@ const CommentItem = ({
         </div>
       </div>
       <div className="comment__header">
-        <p className="comment__header--name">{user.displayName}</p>
+        <p className="comment__header--name">{author}</p>
         <h4 className="comment__header--date">
           {moment(new Date(parseInt(timestamp)).toISOString()).fromNow()}
         </h4>

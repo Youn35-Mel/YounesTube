@@ -22,8 +22,9 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useAuthState } from "react-firebase-hooks/auth";
 
-const UploadPageTwo = ({}) => {
-  const [user] = useAuthState(auth);
+const UploadPageTwo = ({ user }) => {
+  // const [user] = useAuthState(auth);
+  console.log(user);
 
   const notify = () => toast("Wow so easy!");
 
@@ -49,7 +50,7 @@ const UploadPageTwo = ({}) => {
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100
         );
         setProgress(prog);
-        console.log(prog);
+        // console.log(prog);
       },
       (error) => console.log(error),
       () => {
