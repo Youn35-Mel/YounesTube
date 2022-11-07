@@ -6,7 +6,7 @@ import { getFirestore, updateDoc, arrayUnion, doc } from "firebase/firestore";
 import Spinner from "../../components/Spinner/Spinner";
 import "./VideoPinDetails.scss";
 import CommentAdd from "../commentAdd/CommentAdd";
-import CommentItem from "../CommentItem/CommentItem";
+import CommentItem from "../CommentItem/commentItem";
 import { v4 as uuid } from "uuid";
 
 ///
