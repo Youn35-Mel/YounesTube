@@ -7,7 +7,7 @@ import {
 } from "../../utils/fetchData";
 import ProfileItem from "../ProfileItem/ProfileItem";
 import { useParams } from "react-router-dom";
-import { app, db, storage } from "../../firebase-config";
+import { app, db, storage, auth } from "../../firebase-config";
 import {
   getFirestore,
   updateDoc,
@@ -18,9 +18,12 @@ import {
 import { deleteObject, ref } from "firebase/storage";
 import { useNavigate } from "react-router-dom";
 import "./Profile.scss";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 const Profile = ({ user }) => {
-  console.log(user);
+  // console.log(user);
+  // const [user] = useAuthState(auth);
+
   let navigate = useNavigate();
   const { userId } = useParams();
   const [userInfo, setUserInfo] = useState(null);
@@ -36,7 +39,7 @@ const Profile = ({ user }) => {
       });
       userUploadedVideos(fireStoreDb, userId).then((feed) => {
         setFeeds(feed);
-        // console.log(feed);
+        console.log(feed);
       });
     }
   }, [userId, userId]);

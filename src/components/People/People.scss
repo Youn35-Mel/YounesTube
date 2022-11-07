@@ -1,0 +1,30 @@
+.block {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: black;
+  width: 200px;
+  margin-bottom: 10px;
+  border-radius: 20px;
+
+  &__name {
+    color: white;
+    text-decoration: underline;
+  }
+
+  &__image {
+    border-radius: 50%;
+    width: 50%;
+    height: 70px;
+    margin-left: 50px;
+  }
+
+  &__msgUser {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__msg-icon {
+    height: 30px;
+  }
+}

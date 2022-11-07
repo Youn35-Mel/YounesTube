@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { storage } from "../../firebase-config";
+import { storage, auth } from "../../firebase-config";
 import { fetchUser } from "../../utils/fetchUser";
 import {
   ref,
@@ -20,8 +20,11 @@ import Box from "@mui/material/Box";
 import "./UploadPageTwo.scss";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useAuthState } from "react-firebase-hooks/auth";
 
-const UploadPageTwo = ({ user }) => {
+const UploadPageTwo = ({}) => {
+  const [user] = useAuthState(auth);
+
   const notify = () => toast("Wow so easy!");
 
   const [videoAsset, setVideoAsset] = useState(null);
@@ -85,6 +88,10 @@ const UploadPageTwo = ({ user }) => {
       description: description,
       videoUrl: videoAsset,
       userId: userInfo.uid,
+      createdBy: user.displayName,
+      userId: user.uid,
+      likes: [],
+      comments: [],
     };
     await setDoc(doc(firebaseDb, "videos", `${Date.now()}`), data);
     notify();

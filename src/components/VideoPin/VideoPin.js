@@ -2,45 +2,30 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getUserInfo } from "../../utils/fetchData";
 import "./VideoPin.scss";
-import { app } from "../../firebase-config";
+import { app, auth } from "../../firebase-config";
 import { getFirestore } from "firebase/firestore";
 import moment from "moment";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
+import LikeArticle from "../LikeArticle/LikeArticle";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { db } from "../../firebase-config";
 
 const avatarProfile =
   "https://www.pikpng.com/pngl/m/80-805068_my-profile-icon-blank-profile-picture-circle-clipart.png";
 
 const VideoPin = ({ data, user }) => {
-  // console.log(data);
+  console.log(data);
+  // const [user] = useAuthState(auth);
 
-  const firestoreDb = getFirestore(app);
   const [userInfo, setUserInfo] = useState(null);
   const [userId, setUserId] = useState(null);
   const [like, setLike] = useState(false);
   const [saved, setSaved] = useState(false);
 
-  // const movieID = doc(firestoreDb, "videos", videoId);
-
-  // const saveShow = async () => {
-  //   if (user?.email) {
-  //     setLike(!like);
-  //     setSaved(true);
-  //     await updateDoc("videos", {
-  //       savedShows: arrayUnion({
-  //         // id: item.id,
-  //         // title: item.title,
-  //         // img: item.backdrop_path,
-  //       }),
-  //     });
-  //   } else {
-  //     alert("Please log in to save a movie");
-  //   }
-  // };
-  //
   useEffect(() => {
     if (data) setUserId(data.userId);
     if (userId)
-      getUserInfo(firestoreDb, userId).then((data) => {
+      getUserInfo(db, userId).then((data) => {
         setUserInfo(data);
       });
   }, [userId]);
@@ -74,11 +59,7 @@ const VideoPin = ({ data, user }) => {
           <p
           // onClick={saveShow}
           >
-            {like ? (
-              <FaHeart className="channel__heart" />
-            ) : (
-              <FaRegHeart className="channel__heart" />
-            )}
+            {user && <LikeArticle id={data.id} likes={data.likes} />}
           </p>
         </div>
       </div>

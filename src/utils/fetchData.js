@@ -28,6 +28,13 @@ export const getAllFeeds = async (firestoreDb) => {
   return feeds.docs.map((doc) => doc.data());
 };
 
+export const getAllUsers = async (firestoreDb) => {
+  const feeds = await getDocs(
+    query(collection(firestoreDb, "users"), orderBy("uid", "desc"))
+  );
+
+  return feeds.docs.map((doc) => doc.data());
+};
 // useruploaded videos
 export const userUploadedVideos = async (firestoreDb, userId) => {
   const feeds = await getDocs(

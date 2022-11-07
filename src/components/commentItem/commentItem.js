@@ -3,15 +3,19 @@ import "./CommentItem.scss";
 import moment from "moment";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { deleteDoc, doc } from "firebase/firestore";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { storage, db, auth } from "../../firebase-config";
 
 const CommentItem = ({
   comment,
-  user,
+  // user,
   timestamp,
   deleteComment,
   userInfo,
   key,
 }) => {
+  const [user] = useAuthState(auth);
+
   return (
     <div className="comment__default">
       <div className="comment__default-container-one">
@@ -24,7 +28,7 @@ const CommentItem = ({
         </div>
       </div>
       <div className="comment__header">
-        <p className="comment__header--name">name</p>
+        <p className="comment__header--name">{user.displayName}</p>
         <h4 className="comment__header--date">
           {moment(new Date(parseInt(timestamp)).toISOString()).fromNow()}
         </h4>
