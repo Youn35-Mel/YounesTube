@@ -100,11 +100,25 @@ const VideoPinDetails = ({ user }) => {
   };
 
   //delete comment
-  // const deleteRef = doc(firebaseDb, "videos", videoId);
+  const deleteRef = doc(firebaseDb, "videos", videoId);
   const deleteComment = async (key) => {
     const postDoc = doc(firebaseDb, "videos", key);
     await deleteDoc(postDoc);
   };
+
+  // delete comment function
+  // const deleteComment = (comment) => {
+  //   console.log(comment);
+  //   updateDoc(commentRef, {
+  //     comments: arrayRemove(comment),
+  //   })
+  //     .then((e) => {
+  //       console.log(e);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // };
 
   //like comment
   // const handleLike = () => {};

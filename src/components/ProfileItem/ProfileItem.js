@@ -21,7 +21,7 @@ const style = {
   p: 4,
 };
 const ProfileItem = ({ item, deleteProfileVideo }) => {
-  // console.log(item);
+  // console.log(item.id);
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -46,11 +46,10 @@ const ProfileItem = ({ item, deleteProfileVideo }) => {
             <Typography id="modal-modal-description" sx={{ mt: 2 }}>
               Are you sure you want to delete this video?
             </Typography>
-            <IconButton aria-label="delete">
-              <DeleteIcon
-                sx={{ color: pink[500] }}
-                onClick={() => deleteProfileVideo(item.id)}
-              />
+            <IconButton
+              aria-label="delete"
+              onClick={() => deleteProfileVideo(item.id)}>
+              <DeleteIcon sx={{ color: pink[500] }} />
             </IconButton>
           </Box>
         </Modal>

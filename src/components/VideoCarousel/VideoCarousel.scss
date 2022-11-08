@@ -1,5 +1,6 @@
 .video-carousel {
   margin-top: 2rem;
+  padding: 0 3rem;
   &__video {
     object-fit: fill;
     margin: 0;
@@ -9,7 +10,12 @@
   }
 
   &__description {
-    margin: 0;
+    margin-bottom: 3px;
     font-size: 12px;
+  }
+
+  &__description-icons {
+    justify-content: space-between;
+    display: flex;
   }
 }

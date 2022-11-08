@@ -18,7 +18,9 @@ import { deleteObject, ref } from "firebase/storage";
 import { useNavigate } from "react-router-dom";
 import "./Profile.scss";
 import { useAuthState } from "react-firebase-hooks/auth";
-
+import FacebookIcon from "@mui/icons-material/Facebook";
+import TwitterIcon from "@mui/icons-material/Twitter";
+import InstagramIcon from "@mui/icons-material/Instagram";
 const Profile = ({ user }) => {
   // const [user] = useAuthState(auth);
 
@@ -50,18 +52,9 @@ const Profile = ({ user }) => {
         <img className="profile__img" src={userInfo?.photoURL} alt="" />
         <h1>Channel</h1>
         <p class="title">Lenny Guvnor</p>
-        <a>
-          <i class="fa fa-dribbble"></i>
-        </a>
-        <a>
-          <i class="fa fa-twitter"></i>
-        </a>
-        <a>
-          <i class="fa fa-linkedin"></i>
-        </a>
-        <a>
-          <i class="fa fa-facebook"></i>
-        </a>
+        <FacebookIcon />
+        <TwitterIcon />
+        <InstagramIcon />
         <p>
           <button className="button-contact">Contact</button>
         </p>

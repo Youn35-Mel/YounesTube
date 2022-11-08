@@ -1,30 +1,47 @@
+@use "../../styles/partials/mixins" as *;
 .block {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background: black;
+  background: white;
   width: 200px;
   margin-bottom: 10px;
   border-radius: 20px;
+  padding: 1rem 6rem 2rem 5rem;
 
   &__name {
-    color: white;
-    text-decoration: underline;
+    color: black;
+  }
+
+  &__icons {
+    display: flex;
+    justify-content: center;
   }
 
   &__image {
     border-radius: 50%;
     width: 50%;
     height: 70px;
-    margin-left: 50px;
   }
 
-  &__msgUser {
-    display: flex;
-    flex-direction: column;
+  &__msg {
+    @include form-button-blue;
+    background-image: url("../../assets/Icons/message.svg");
+    background-repeat: no-repeat;
+    background-position: 12px;
+    margin-bottom: 20px;
   }
 
-  &__msg-icon {
+  &__msg {
     height: 30px;
+  }
+
+  &__videos-info {
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  &__videos-info-container {
+    padding: 0 2rem;
   }
 }

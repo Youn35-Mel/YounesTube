@@ -97,7 +97,7 @@ const UploadPageTwo = ({ user }) => {
     await setDoc(doc(firebaseDb, "videos", `${Date.now()}`), data);
     notify();
     setProgress(0);
-    // navigate("/channels", { replace: true });
+    navigate("/channels", { replace: true });
   };
 
   useEffect(() => {}, [title, description]);
@@ -145,7 +145,7 @@ const UploadPageTwo = ({ user }) => {
         </form>
         <hr />
         <h2>Uploading done {progress}%</h2>
-        {progress === 0 || 100 ? null : (
+        {progress === 0 ? null : (
           <div className="progress">
             <Box sx={{ width: "100%" }}>
               <LinearProgress />

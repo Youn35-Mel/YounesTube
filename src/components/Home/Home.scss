@@ -9,3 +9,10 @@
   bottom: 0;
   z-index: -1;
 }
+
+.account-lists {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 2rem;
+}
