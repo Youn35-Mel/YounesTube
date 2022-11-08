@@ -8,6 +8,7 @@ import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import IconButton from "@mui/material/IconButton";
 import { deleteVideo } from "../../utils/fetchData";
+import { Link } from "react-router-dom";
 
 const style = {
   position: "absolute",
@@ -21,7 +22,7 @@ const style = {
   p: 4,
 };
 const ProfileItem = ({ item, deleteProfileVideo }) => {
-  // console.log(item.id);
+  // console.log(item);
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -31,9 +32,8 @@ const ProfileItem = ({ item, deleteProfileVideo }) => {
         // props.sideClickHandler(props.user.id);
       }}>
       <li className="video-list__item">
-        <button onClick={handleOpen} className="video-list__delete">
-          <DeleteIcon />
-        </button>
+        <DeleteIcon onClick={handleOpen} />
+
         <Modal
           open={open}
           onClose={handleClose}
@@ -53,7 +53,9 @@ const ProfileItem = ({ item, deleteProfileVideo }) => {
             </IconButton>
           </Box>
         </Modal>
-        <video className="video-list__img" src={item?.videoUrl}></video>
+        <Link to={`/videoDetails/${item.id}`}>
+          <video className="video-list__img" src={item?.videoUrl}></video>
+        </Link>
         <div className="video-list__title-name-container">
           <h3 className="video-list__title">{item.title}</h3>
           <p className="video-list__channel"> {item.description}</p>

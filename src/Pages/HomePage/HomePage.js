@@ -11,6 +11,7 @@ import VideoPinDetails from "../../components/VideoPinDetails/VideoPinDetails";
 import "./HomePage.scss";
 import Home from "../../components/Home/Home";
 import Chat from "../../components/Chat/Chat";
+import Record from "../../components/Record/Record";
 
 const HomePage = ({ user }) => {
   return (
@@ -31,14 +32,11 @@ const HomePage = ({ user }) => {
             element={<VideoPinDetails user={user} />}
           />
 
-          <Route path="/savedItems" element={<Saved user={user} />} />
-          {/* <Route path="/upload" element={<Upload />} /> */}
+          <Route path="/savedItems/:userId" element={<Saved user={user} />} />
+
           <Route path="/upload" element={<UploadPageTwo user={user} />} />
           <Route path="/messages" element={<Chat />} />
-
-          {/* <Route path="/login" element={<Login />} /> */}
-          {/* <Route path="/signup" element={<Signup />} /> */}
-          {/* <Route path="/videos/:id" element={<HomePage />} /> */}
+          <Route path="/record" element={<Record />} />
         </Routes>
       </div>
     </div>

@@ -51,13 +51,20 @@
 
   &__button {
     @include third-CTA;
+    border-radius: 20px;
   }
 
   &__login-with-google-btn {
     @include Google-CTA;
+    width: 300px;
+    margin: 0 auto;
   }
 
   p {
+    color: white;
+  }
+
+  label {
     color: white;
   }
 }

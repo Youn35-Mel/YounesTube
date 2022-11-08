@@ -48,10 +48,11 @@ const Profile = ({ user }) => {
   };
   return (
     <section className="profile">
+      <div className="profile__background-img"></div>
       <div className="profile__img-container">
         <img className="profile__img" src={userInfo?.photoURL} alt="" />
         <h1>Channel</h1>
-        <p class="title">Lenny Guvnor</p>
+        <p className="title">Lenny Guvnor</p>
         <FacebookIcon />
         <TwitterIcon />
         <InstagramIcon />

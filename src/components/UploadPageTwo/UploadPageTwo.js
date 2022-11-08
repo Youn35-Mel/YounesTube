@@ -16,6 +16,7 @@ import { app } from "../../firebase-config";
 import { v4 } from "uuid";
 import { useNavigate } from "react-router-dom";
 import LinearProgress from "@mui/material/LinearProgress";
+
 import Box from "@mui/material/Box";
 import "./UploadPageTwo.scss";
 import { ToastContainer, toast } from "react-toastify";
@@ -95,9 +96,9 @@ const UploadPageTwo = ({ user }) => {
       comments: [],
     };
     await setDoc(doc(firebaseDb, "videos", `${Date.now()}`), data);
-    notify();
+    // notify();
+    toast("Video Uploaded to server successfully", { type: "success" });
     setProgress(0);
-    navigate("/channels", { replace: true });
   };
 
   useEffect(() => {}, [title, description]);
@@ -147,9 +148,7 @@ const UploadPageTwo = ({ user }) => {
         <h2>Uploading done {progress}%</h2>
         {progress === 0 ? null : (
           <div className="progress">
-            <Box sx={{ width: "100%" }}>
-              <LinearProgress />
-            </Box>
+            <Box sx={{ width: "100%" }}>{/* <LinearProgress /> */}</Box>
           </div>
         )}
       </div>
@@ -167,6 +166,7 @@ const UploadPageTwo = ({ user }) => {
         className="upload__upload-video"
         src={videoAsset}
         style={{ width: "100%", height: "250px" }}></video>
+      <ToastContainer />
     </section>
   );
 };

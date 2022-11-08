@@ -24,7 +24,7 @@ const SideNavBar = ({ user }) => {
       id: 3,
     },
     {
-      path: "/savedItems",
+      path: `/savedItems/${user?.uid}`,
       text: "Saved Items",
       icon: "/icons/heart.svg",
       id: 4,
@@ -39,6 +39,12 @@ const SideNavBar = ({ user }) => {
       path: "/messages",
       text: "Messages",
       icon: "/icons/message.svg",
+      id: 6,
+    },
+    {
+      path: "/record",
+      text: "Record",
+      icon: "/icons/pie-chart.svg",
       id: 6,
     },
   ];

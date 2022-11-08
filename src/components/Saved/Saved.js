@@ -3,6 +3,8 @@ import { db } from "../../firebase-config";
 import { updateDoc, doc, onSnapshot } from "firebase/firestore";
 import { fetchUser } from "../../utils/fetchUser";
 import { useParams } from "react-router-dom";
+import { getAllSavedVideos, getUserSavedVideo } from "../../utils/fetchData";
+import "./Saved.scss";
 
 /// to  be tested
 const Saved = ({ user }) => {
@@ -10,16 +12,24 @@ const Saved = ({ user }) => {
   const [feeds, setFeeds] = useState([]);
 
   useEffect(() => {
-    onSnapshot(doc(db, "videos", `${userId}`), (doc) => {
-      setFeeds(doc.data()?.Saved);
+    getUserSavedVideo(db, userId).then((data) => {
+      setFeeds(data);
     });
-  }, [userId]);
+    // getAllSavedVideos(db).then((data) => {
+    //   setFeeds(data);
+    //   console.log(data);
+    // });
+  }, []);
 
   return (
     <div>
       {feeds &&
         feeds.map((item) => {
-          console.log(item);
+          return (
+            <div className="saved" key={item.id}>
+              <video className="saved__vid" src={item.videoUrl}></video>
+            </div>
+          );
         })}
     </div>
   );

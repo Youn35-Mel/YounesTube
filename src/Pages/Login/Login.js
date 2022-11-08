@@ -32,7 +32,7 @@ const Login = () => {
     <div className="signup">
       <div className="signup__formWrapper-container">
         <div className="signup__formWrapper">
-          <h1 className="signup__title">Logn In</h1>
+          <h1 className="signup__title">Login</h1>
           <button
             onClick={() => {
               login();
@@ -43,12 +43,14 @@ const Login = () => {
           <form
             // onSubmit={handleSubmit}
             className="signup__form">
+            <label htmlFor="">Email</label>
             <input
               // onChange={(e) => setEmail(e.target.value)}
               type="email"
               className="signup__email"
               placeholder="email"
             />
+            <label htmlFor="">Password</label>
             <input
               // onChange={(e) => setPassword(e.target.value)}
               type="password"

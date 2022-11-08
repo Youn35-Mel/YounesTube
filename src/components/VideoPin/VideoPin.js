@@ -2,25 +2,49 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getUserInfo } from "../../utils/fetchData";
 import "./VideoPin.scss";
-import { app, auth } from "../../firebase-config";
-import { getFirestore } from "firebase/firestore";
+import { getFirestore, arrayUnion, doc, updateDoc } from "firebase/firestore";
 import moment from "moment";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import LikeArticle from "../LikeArticle/LikeArticle";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { db } from "../../firebase-config";
+import { db, app, auth } from "../../firebase-config";
 
 const avatarProfile =
   "https://www.pikpng.com/pngl/m/80-805068_my-profile-icon-blank-profile-picture-circle-clipart.png";
 
 const VideoPin = ({ data, user, setLikeClicked }) => {
-  console.log(data);
-  // const [user] = useAuthState(auth);
+  // console.log(data);
+  console.log(user);
+
+  const [person] = useAuthState(auth);
+  console.log(person);
 
   const [userInfo, setUserInfo] = useState(null);
   const [userId, setUserId] = useState(null);
   const [like, setLike] = useState(false);
   const [saved, setSaved] = useState(false);
+
+  // const savedMovie = doc(db, "Saved", `${user?.email}`);
+  const savedMovie = doc(db, "Saved", "FABN231mL5VcgOxXSWJE");
+
+  const saveShow = async () => {
+    console.log("liked to save");
+    if (user?.email) {
+      setLike(!like);
+      setSaved(true);
+
+      console.log(savedMovie);
+
+      await updateDoc(savedMovie, {
+        savedShows: arrayUnion({
+          userId: user.uid,
+          id: data.id,
+          title: data.title,
+          videoURL: data.videoUrl,
+        }),
+      });
+    }
+  };
 
   useEffect(() => {
     if (data) setUserId(data.userId);
@@ -56,9 +80,8 @@ const VideoPin = ({ data, user, setLikeClicked }) => {
         </div>
         <div className="content__right">
           <p> {moment(new Date(parseInt(data.id)).toISOString()).fromNow()}</p>
-          <p
-          // onClick={saveShow}
-          >
+
+          <p onClick={saveShow}>
             {user && (
               <LikeArticle
                 id={data.id}

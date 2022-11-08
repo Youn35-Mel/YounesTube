@@ -39,12 +39,11 @@ const CommentItem = ({
       </div>
       <div className="comment__icon">
         <button
-          onClick={() => {
-            deleteComment(key);
+          onClick={(e) => {
+            deleteComment({ e, key });
           }}
           className="comment__icon-btn"
           name="deleteID">
-          {/* <FontAwesomeIcon icon={faTrash} /> */}
           <DeleteIcon />
         </button>
       </div>

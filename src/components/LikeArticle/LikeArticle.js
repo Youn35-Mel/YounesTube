@@ -14,22 +14,22 @@ const LikeArticle = ({ id, likes, setLikeClicked }) => {
         likes: arrayRemove(user.uid),
       })
         .then(() => {
-          console.log("unliked");
+          // console.log("unliked");
           setLikeClicked(true);
         })
         .catch((e) => {
-          console.log(e);
+          // console.log(e);
         });
     } else {
       updateDoc(likesRef, {
         likes: arrayUnion(user.uid),
       })
         .then(() => {
-          console.log("liked");
+          // console.log("liked");
           setLikeClicked(true);
         })
         .catch((e) => {
-          console.log(e);
+          // console.log(e);
         });
     }
   };
