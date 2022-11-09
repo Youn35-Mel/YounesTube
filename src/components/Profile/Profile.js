@@ -45,6 +45,10 @@ const Profile = ({ user }) => {
   const deleteProfileVideo = async (videoId) => {
     console.log("delete");
     deleteVideo(db, videoId);
+    userUploadedVideos(db, userId).then((feed) => {
+      setFeeds(feed);
+      // console.log(feed);
+    });
   };
   return (
     <section className="profile">

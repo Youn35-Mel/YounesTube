@@ -12,7 +12,7 @@ import { db, app, auth } from "../../firebase-config";
 const avatarProfile =
   "https://www.pikpng.com/pngl/m/80-805068_my-profile-icon-blank-profile-picture-circle-clipart.png";
 
-const VideoPin = ({ data, user, setLikeClicked }) => {
+const VideoPin = ({ data, user, setLikeClicked, row }) => {
   // console.log(data);
   console.log(user);
 
@@ -58,30 +58,39 @@ const VideoPin = ({ data, user, setLikeClicked }) => {
   let pinSize = arrayPin[Math.floor(Math.random() * arrayPin.length)];
 
   return (
-    <div className={`pin ${pinSize}`}>
+    <div className={`${row ? `pin ${pinSize}` : "no-pin"}`}>
       <Link to={`/videoDetails/${data.id}`}>
         <video
-          className="mainPic"
+          className={`${row ? "mainPic" : "no-mainPic"}`}
           src={data.videoUrl}
           muted
           onMouseOver={(e) => e.target.play()}
           onMouseOut={(e) => e.target.pause()}></video>
       </Link>
-      <div className="content">
-        <div className="content__left">
+      <div className={`${row ? "content" : "NoContent"}`}>
+        <div className={`${row ? "content__left" : "NoContent__left"}`}>
           <Link to={`/userProfile/${userId}`}>
             <img
-              className="channels__profile-img"
+              className={`${
+                row ? "channels__profile-img" : "NoContent__profile-img"
+              }`}
               src={userInfo?.photoURL ? userInfo?.photoURL : avatarProfile}
               alt=""
             />
           </Link>
-          <h3 className="content__title">{data.title}</h3>
+          <h3 className={`${row ? "content__title" : "NoContent__title"}`}>
+            {data.title}
+          </h3>
         </div>
-        <div className="content__right">
-          <p> {moment(new Date(parseInt(data.id)).toISOString()).fromNow()}</p>
+        <div className={`${row ? "content__right" : "NoContent__right"}`}>
+          <p className={`${row ? "content__time" : "NoContent__time"}`}>
+            {" "}
+            {moment(new Date(parseInt(data.id)).toISOString()).fromNow()}
+          </p>
 
-          <p onClick={saveShow}>
+          <p
+            className={`${row ? "content__like" : "NoContent__like"}`}
+            onClick={saveShow}>
             {user && (
               <LikeArticle
                 id={data.id}

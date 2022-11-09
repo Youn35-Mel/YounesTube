@@ -23,6 +23,10 @@ const Channels = ({ user }) => {
   const [likeClicked, setLikeClicked] = useState(false);
   const [row, setRow] = useState(true);
 
+  const changeFormat = (layout) => {
+    layout === "module" ? setRow(false) : setRow(true);
+  };
+
   useEffect(() => {
     //fetch the data
     getAllFeeds(firestoreDb).then((data) => {
@@ -45,8 +49,16 @@ const Channels = ({ user }) => {
           onChange={(e) => setSearch(e.target.value)}
         />
         <div>
-          <ViewModuleIcon />
-          <ViewQuiltIcon />
+          <button onClick={() => changeFormat("module")}>
+            <ViewModuleIcon />
+          </button>
+          <button
+            id="quilt"
+            onClick={() => {
+              changeFormat("quilt");
+            }}>
+            <ViewQuiltIcon />
+          </button>
         </div>
       </div>
       <div className={`${row ? "mainContainer" : "column"}`}>
@@ -64,6 +76,7 @@ const Channels = ({ user }) => {
                   data={data}
                   user={user}
                   setLikeClicked={setLikeClicked}
+                  row={row}
                 />
               );
             })}

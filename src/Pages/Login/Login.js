@@ -25,7 +25,7 @@ const Login = () => {
       providerData[0]
     );
 
-    navigate("/", { replace: true });
+    navigate("/home", { replace: true });
   };
 
   return (
@@ -65,7 +65,7 @@ const Login = () => {
               <p>Need Help?</p>
             </div>
             <p>
-              <span>span New to YounesTube?</span>
+              New to YounesTube?
               <Link to="/signup">Sign Up</Link>
             </p>
           </form>
