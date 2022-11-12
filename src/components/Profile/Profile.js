@@ -56,7 +56,7 @@ const Profile = ({ user }) => {
       <div className="profile__img-container">
         <img className="profile__img" src={userInfo?.photoURL} alt="" />
         <h1>Channel</h1>
-        <p className="title">Lenny Guvnor</p>
+        <p className="title">{user.displayName}</p>
         <FacebookIcon />
         <TwitterIcon />
         <InstagramIcon />

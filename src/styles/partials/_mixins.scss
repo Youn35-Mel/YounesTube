@@ -98,13 +98,12 @@ $container-breakpoint: 1280px;
 }
 
 @mixin third-CTA {
-  background-color: red;
+  background-color: #2e66e5;
   color: white;
   font-weight: bold;
   border: none;
   height: 4rem;
-  width: 80%;
-  padding: 0 1.6rem;
+  width: 100%;
   margin-bottom: 2rem;
 }
 

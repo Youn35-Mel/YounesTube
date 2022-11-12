@@ -59,9 +59,10 @@
 
   &__right {
     border: 5px solid black;
+    border-left: 7px solid black;
     overflow: scroll;
     color: black;
-    height: 100vh;
+    height: 102vh;
     width: 24vw;
   }
 }

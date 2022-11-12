@@ -44,7 +44,7 @@ const SideNavBar = ({ user }) => {
     {
       path: "/record",
       text: "Record",
-      icon: "/icons/pie-chart.svg",
+      icon: "/icons/play.svg",
       id: 6,
     },
   ];

@@ -67,7 +67,8 @@ const Channels = ({ user }) => {
             .filter((video) => {
               return search.toLowerCase() === ""
                 ? video
-                : video.title.toLowerCase().includes(search);
+                : video.title.toLowerCase().includes(search) ||
+                    video.title.toLowerCase().includes(search);
             })
             .map((data) => {
               return (

@@ -29,6 +29,7 @@
 
   &__title-name-container {
     display: flex;
+    align-items: flex-start;
     flex-direction: column;
     justify-content: space-around;
   }
@@ -45,4 +46,8 @@
     overflow: hidden;
     margin-bottom: 7px;
   }
+}
+
+p {
+  font-size: 15px;
 }

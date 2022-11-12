@@ -2,12 +2,11 @@
 
 .new-comment {
   &__comment-container {
-    background-color: gray;
+    background-color: #0065ad;
     display: flex;
     position: absolute;
-    bottom: 0;
-    margin-bottom: 1rem;
-    padding: 1rem;
+    bottom: 16px;
+    padding: 0.9rem;
   }
 
   &__user-img {
@@ -31,7 +30,8 @@
   &__textarea {
     @extend .selected-text-input;
     width: 15vw;
-    padding: 1rem;
+    padding: 0.5rem;
+    padding-right: 1.5rem;
     outline-color: 1px solid black;
   }
 
