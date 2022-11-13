@@ -1,7 +1,7 @@
 .video-list {
   list-style: none;
 
-  padding: 16px 16px 0 16px;
+  padding: 1rem 1rem 0 1rem;
 
   &__heading-label {
     margin-bottom: 25px;
@@ -17,14 +17,14 @@
 
   &__item {
     display: flex;
-    padding: 12px 0px 6px 0px;
+    padding: 1rem 0 0.6rem 0;
   }
 
   &__img {
     min-width: 130px;
     height: 75px;
-    border-radius: 4px;
-    margin-right: 20px;
+    border-radius: 0.4rem;
+    margin-right: 1.3rem;
   }
 
   &__title-name-container {
@@ -42,12 +42,12 @@
   }
 
   &__title {
-    max-height: 48px;
+    max-height: 4rem;
     overflow: hidden;
-    margin-bottom: 7px;
+    margin-bottom: 1rem;
   }
 }
 
 p {
-  font-size: 15px;
+  font-size: 1.2rem;
 }

@@ -18,7 +18,7 @@ import {
 import Spinner from "../../components/Spinner/Spinner";
 import "./VideoPinDetails.scss";
 import CommentAdd from "../commentAdd/CommentAdd";
-import CommentItem from "../CommentItem/commentItem";
+import CommentItem from "../commentItem/commentItem";
 import VideoCarousel from "../VideoCarousel/VideoCarousel";
 import { v4 as uuid } from "uuid";
 

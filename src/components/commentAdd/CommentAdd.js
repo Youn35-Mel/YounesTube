@@ -26,12 +26,6 @@ const CommentAdd = ({ setFormComment, submitHandler, user }) => {
               className="new-comment__textarea"
               placeholder="Add a new comment"
               onChange={(e) => setFormComment(e.target.value)}></textarea>
-            {/* <Button
-              onSubmit={(e) => submitHandler(e)}
-              variant="contained"
-              endIcon={<SendIcon />}>
-              Send
-            </Button> */}
             <button type="submit" className="new-comment__submit-btn">
               <SendIcon />
             </button>

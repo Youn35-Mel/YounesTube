@@ -5,13 +5,13 @@
     background-color: #0065ad;
     display: flex;
     position: absolute;
-    bottom: 16px;
+    bottom: 1rem;
     padding: 0.9rem;
   }
 
   &__user-img {
-    width: 48px;
-    height: 48px;
+    width: 3.2rem;
+    height: 3.2rem;
     border-radius: 50%;
     object-fit: cover;
     object-position: left;

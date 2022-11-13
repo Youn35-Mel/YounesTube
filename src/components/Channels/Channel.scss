@@ -5,13 +5,11 @@
 
 .search {
   &__search {
-    border-radius: 20px;
+    border-radius: 2rem;
     border: 1px solid grey;
     padding: 0.8rem 1.6rem;
     background: url("../../assets/Icons/search.svg") no-repeat 95% 50%;
-    // @include tablet {
     width: 27.4rem;
-    margin-top: 1rem;
-    // }
+    margin: 1rem 0;
   }
 }
