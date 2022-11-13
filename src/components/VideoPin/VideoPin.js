@@ -4,7 +4,6 @@ import { getUserInfo } from "../../utils/fetchData";
 import "./VideoPin.scss";
 import { getFirestore, arrayUnion, doc, updateDoc } from "firebase/firestore";
 import moment from "moment";
-import { FaHeart, FaRegHeart } from "react-icons/fa";
 import LikeArticle from "../LikeArticle/LikeArticle";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { db, app, auth } from "../../firebase-config";

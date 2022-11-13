@@ -1,7 +1,6 @@
 import { db, auth } from "../../firebase-config";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import { Timestamp, collection, addDoc } from "firebase/firestore";
-import { useAuthState } from "react-firebase-hooks/auth";
 const style = {
   form: `h-14 w-full max-w-[728px]  flex text-xl absolute bottom-0`,
   input: `w-full text-xl p-3 bg-gray-900 text-white outline-none border-none`,

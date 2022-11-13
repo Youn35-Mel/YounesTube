@@ -1,27 +1,21 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+
 import { storage, auth } from "../../firebase-config";
 import { fetchUser } from "../../utils/fetchUser";
 import {
   ref,
-  uploadBytes,
   getDownloadURL,
   uploadBytesResumable,
-  listAll,
-  list,
   deleteObject,
 } from "firebase/storage";
 import { doc, getFirestore, setDoc } from "firebase/firestore";
 import { app } from "../../firebase-config";
 import { v4 } from "uuid";
 import { useNavigate } from "react-router-dom";
-import LinearProgress from "@mui/material/LinearProgress";
-
 import Box from "@mui/material/Box";
 import "./UploadPageTwo.scss";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useAuthState } from "react-firebase-hooks/auth";
 
 const UploadPageTwo = ({ user }) => {
   // const [user] = useAuthState(auth);
@@ -153,9 +147,6 @@ const UploadPageTwo = ({ user }) => {
         )}
       </div>
       <div className="upload__delete-upload-container">
-        {/* <button className="upload__delete" onClick={deleteImage}>
-          Delete
-        </button> */}
         <button
           onClick={() => uploadDetails(title, description)}
           className="upload__upload-server">

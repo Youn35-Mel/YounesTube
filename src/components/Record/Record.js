@@ -1,16 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useRecordWebcam } from "react-record-webcam";
-import { db, storage } from "../../firebase-config";
-import { doc, getFirestore, setDoc } from "firebase/firestore";
-import {
-  ref,
-  uploadBytes,
-  getDownloadURL,
-  uploadBytesResumable,
-  listAll,
-  list,
-  deleteObject,
-} from "firebase/storage";
+import { storage } from "../../firebase-config";
+
+import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
 var FileSaver = require("file-saver");
 
 const OPTIONS = {

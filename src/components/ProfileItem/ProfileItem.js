@@ -3,11 +3,11 @@ import "./ProfileItem.scss";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { pink } from "@mui/material/colors";
 import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
+
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import IconButton from "@mui/material/IconButton";
-import { deleteVideo } from "../../utils/fetchData";
+
 import { Link } from "react-router-dom";
 
 const style = {

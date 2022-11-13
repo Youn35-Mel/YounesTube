@@ -40,9 +40,7 @@ const Login = () => {
             className="signup__login-with-google-btn">
             Sign in with Google
           </button>
-          <form
-            // onSubmit={handleSubmit}
-            className="signup__form">
+          <form className="signup__form">
             <label htmlFor="">Email</label>
             <input
               // onChange={(e) => setEmail(e.target.value)}

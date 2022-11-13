@@ -6,10 +6,6 @@ import Spinner from "../../components/Spinner/Spinner";
 import "../VideoPin/VideoPin.scss";
 import "./Channel.scss";
 //grid import
-import { experimentalStyled as styled } from "@mui/material/styles";
-import Box from "@mui/material/Box";
-import Paper from "@mui/material/Paper";
-import Grid from "@mui/material/Grid";
 import VideoPin from "../VideoPin/VideoPin";
 import ViewModuleIcon from "@mui/icons-material/ViewModule";
 import ViewQuiltIcon from "@mui/icons-material/ViewQuilt";

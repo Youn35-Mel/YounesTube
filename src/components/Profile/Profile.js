@@ -7,23 +7,14 @@ import {
 import ProfileItem from "../ProfileItem/ProfileItem";
 import { useParams } from "react-router-dom";
 import { app, db, storage, auth } from "../../firebase-config";
-import {
-  getFirestore,
-  updateDoc,
-  arrayUnion,
-  doc,
-  deleteDoc,
-} from "firebase/firestore";
-import { deleteObject, ref } from "firebase/storage";
+
 import { useNavigate } from "react-router-dom";
 import "./Profile.scss";
-import { useAuthState } from "react-firebase-hooks/auth";
+
 import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import InstagramIcon from "@mui/icons-material/Instagram";
 const Profile = ({ user }) => {
-  // const [user] = useAuthState(auth);
-
   let navigate = useNavigate();
   const { userId } = useParams();
   const [userInfo, setUserInfo] = useState(null);

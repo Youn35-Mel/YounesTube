@@ -1,10 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import "./CommentItem.scss";
 import moment from "moment";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { deleteDoc, doc } from "firebase/firestore";
-import { useAuthState } from "react-firebase-hooks/auth";
-import { storage, db, auth } from "../../firebase-config";
 
 const CommentItem = ({
   comment,

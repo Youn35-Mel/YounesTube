@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { db } from "../../firebase-config";
-import { updateDoc, doc, onSnapshot } from "firebase/firestore";
-import { fetchUser } from "../../utils/fetchUser";
 import { useParams } from "react-router-dom";
-import { getAllSavedVideos, getUserSavedVideo } from "../../utils/fetchData";
+import { getUserSavedVideo } from "../../utils/fetchData";
 import "./Saved.scss";
 
 /// to  be tested
